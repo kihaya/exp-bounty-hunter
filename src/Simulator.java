@@ -128,20 +128,25 @@ public class Simulator implements Runnable {
 	 * synchronize all agents position and cell postion and UI.
 	 */
 	public void sync() {
-		//
+		//for agent
 		for (HunterAgent agent : hunter_agents) {
 			//
 			cells.setValue(agent.getX(), agent.getY(), agent.getAgentId());
 			//
 			mainui.setCellColor(agent);
 		}
-		// ball
+		//for ball 
 		ArrayList<Ball> balls = bailbondsman.getBallCollection();
 		for (Ball ball : balls) {
 			cells.setValue(ball.getX(), ball.getY(), Consts.BALL);
-			mainui.setCellColor(ball);
+			//change ball color depending on ball bounty.
+			if(ball.getBaunty() >= 300){
+			   mainui.setCellColor(ball,true);
+			}else{
+			   mainui.setCellColor(ball,false);
+			}
 		}
-		//
+		//for all cell
 		for (int i = 0; i < 60; ++i) {
 			for (int j = 0; j < 40; ++j) {
 				if (cells.getValue(i, j) == Consts.EMPTY) {

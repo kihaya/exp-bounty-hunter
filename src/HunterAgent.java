@@ -27,6 +27,7 @@ public class HunterAgent {
    
    private double estimate_time;//pp389
    private double estimate_prob;//pp389
+   private int taken_time;
    
    private int current_bounty;
    
@@ -39,6 +40,8 @@ public class HunterAgent {
    
    private int thinking;
    private int eval;
+   
+   private Eval evaluation_algorithm;
    
    public Random r;
    
@@ -73,7 +76,7 @@ public class HunterAgent {
 	   }else if(this.thinking == 2){
 		 findTaskGreedy(bm);
 	   }else if(this.thinking == 1){
-		   findTaskDist(bm);
+		 findTaskDist(bm);
 	   }
 	   
 	   //TODO: sooner this will be implemented as findTask()
@@ -264,5 +267,37 @@ public void findTaskDist(Bailbondsman bm){
    
    public void setBounty(int bounty){
 	   this.current_bounty = this.current_bounty + bounty;
+   }
+   
+   /*
+    * implementation of simple method
+    */
+   class Eval{ 
+	   /*
+	    * next_task (b / T )*P
+	    */
+	   private final int INITIAL_T = 1;
+	   private final int INITIAL_P = 1;
+	   private int b;
+	   private int T;
+	   private double P;
+	   public Ball next_task;
+	   
+	   Eval(int bounty,int time){
+		   this.b = b;
+		   this.T = INITIAL_T;
+		   this.P = INITIAL_P;
+		   next_task = evaluate();
+	   }
+	   
+	   /* find maximum task that is in ball array by using evaluateOne()*/
+	   protected Ball evaluate(){
+		   Ball maximum;
+		   
+		   return null;
+	   }
+	   protected double evaluateOne(int bounty,int time){
+		   return (bounty/time)*this.P;
+	   }
    }
 }

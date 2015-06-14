@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.color.*;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -89,10 +90,13 @@ public class MainUI extends JFrame implements KeyListener {
 		cells.get(arrayindex).setBackground(Color.BLACK);
 	}
 	
-	public void setCellColor(Ball ball){
+	public void setCellColor(Ball ball,boolean high){
 		int arrayindex = zahyoToArrayIndex(ball.getX(),ball.getY());
-		
-		cells.get(arrayindex).setBackground(Color.BLUE);
+		if(high){
+		   cells.get(arrayindex).setBackground(Color.RED);
+		}else{
+			cells.get(arrayindex).setBackground(Color.BLUE);
+		}
 	}
 	
 	public void setCellColor(int x,int y,int type){
