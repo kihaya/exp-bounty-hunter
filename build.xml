@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="shift-jis" ?>
+<project name="exp-boutny-hunter" default="compile">
+<target name="compile">
+<echo message="#build start"/>
+<javac srcdir="./src" destdir="./bin"/>
+</target>
+<target name="clean">
+<delete dir="./bin"/>
+</target>
+</project>
+
+

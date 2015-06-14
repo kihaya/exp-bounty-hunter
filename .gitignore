@@ -1,0 +1,4 @@
+#java compiled binary
+*.class
+#java excutable binary
+*jar
